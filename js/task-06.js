@@ -6,10 +6,16 @@ const refs = {
 refs.validationInput.addEventListener('blur', onInputCorrect);
 
 function onInputCorrect(event) {
-  event.currentTarget.value.length ===
-  Number(refs.correctLength.attributes[2].value)
-    ? refs.validationInput.classList.add('valid')
-    : refs.validationInput.classList.add('invalid');
+  if (
+    event.currentTarget.value.length ===
+    Number(refs.correctLength.dataset.length)
+  ) {
+    refs.validationInput.classList.remove('invalid');
+    refs.validationInput.classList.add('valid');
+  } else {
+    refs.validationInput.classList.remove('valid');
+    refs.validationInput.classList.add('invalid');
+  }
 }
 
 console.log(refs.correctLength);
