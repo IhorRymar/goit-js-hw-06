@@ -13,27 +13,43 @@ const images = [
   },
 ];
 
+// const gallery = document.querySelector('.gallery');
+
+// const srcLinks = images.map((link) => link.url);
+// const altNames = images.map((altName) => altName.alt);
+
+// const imgList = () => {
+//   return `
+//   <li>
+//     <img src="${srcLinks[0]}" alt="${altNames[0]}" width=720px>
+//   </li>
+//   <li>
+//     <img src="${srcLinks[1]}" alt="${altNames[1]}" width=720px>
+//   </li>
+//   <li>
+//     <img src="${srcLinks[2]}" alt="${altNames[2]}" width=720px>
+//   </li>
+//   `;
+// };
+
+// gallery.style.display = 'flex';
+// gallery.style.flexDirection = 'column';
+// gallery.style.alignItems = 'center';
+
+// gallery.insertAdjacentHTML('beforeend', imgList());
+
 const gallery = document.querySelector('.gallery');
 
-const srcLinks = images.map((link) => link.url);
-const altNames = images.map((altName) => altName.alt);
-
-const imgList = () => {
-  return `
-  <li>
-    <img src="${srcLinks[0]}" alt="${altNames[0]}" width=720px>
-  </li>
-  <li>
-    <img src="${srcLinks[1]}" alt="${altNames[1]}" width=720px>
-  </li>
-  <li>
-    <img src="${srcLinks[2]}" alt="${altNames[2]}" width=720px>
-  </li>
-  `;
-};
+gallery.insertAdjacentHTML(
+  'afterbegin',
+  images
+    .map(
+      (image) =>
+        `<li><img src="${image.url}" alt="${image.alt}" width=720px></li>`
+    )
+    .join('')
+);
 
 gallery.style.display = 'flex';
 gallery.style.flexDirection = 'column';
 gallery.style.alignItems = 'center';
-
-gallery.insertAdjacentHTML('beforeend', imgList());
